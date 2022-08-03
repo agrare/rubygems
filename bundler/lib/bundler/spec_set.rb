@@ -84,6 +84,7 @@ module Bundler
 
     def materialized_for_resolution
       materialized = @specs.map do |s|
+        s.source.remote!
         spec = s.materialize_for_resolution
         yield spec if spec
         spec
